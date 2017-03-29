@@ -40,8 +40,6 @@ object Main {
         val arguments = arrayListOf<String>()
         var noReflect = false
 
-        classpath.addPaths(".")
-
         var i = 0
         while (i < args.size) {
             val arg = args[i]
@@ -90,6 +88,10 @@ object Main {
                 collectingArguments = true
             }
             i++
+        }
+
+        if (classpath.isEmpty()) {
+            classpath.addPaths(".")
         }
 
         classpath.addPaths(KOTLIN_HOME.toString() + "/lib/kotlin-runtime.jar")
